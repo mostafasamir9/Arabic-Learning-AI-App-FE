@@ -1,0 +1,11 @@
+.post-item-content {
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Add some space between image and text */
+}
+
+.post-item-content img {
+  max-width: 100px; /* Adjust image size as needed */
+  height: auto;
+  margin-right: 20px; /* Add margin to the right of the image */
+}

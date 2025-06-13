@@ -1,0 +1,53 @@
+<div class="container mt-4">
+  <h2 style="text-align: center; color: white;">Create New Post</h2>
+
+  <form [formGroup]="postForm" (submit)="onSubmit()">
+    <div class="mb-3">
+      <label for="arabicText" class="form-label">Title:</label>
+      <input id="arabicText" formControlName="arabicText" class="form-control" required>
+      <div *ngIf="postForm.get('arabicText')?.invalid && postForm.get('arabicText')?.touched" class="text-danger">
+        Title is required.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="arabicText" class="form-label">Arabic Text:</label>
+      <textarea id="arabicText" formControlName="arabicText" class="form-control" required></textarea>
+      <div *ngIf="postForm.get('arabicText')?.invalid && postForm.get('arabicText')?.touched" class="text-danger">
+        Arabic text is required.
+      </div>
+    </div>
+
+
+    <div class="mb-3">
+      <label for="level" class="form-label">Level:</label>
+      <select id="level" formControlName="level" class="form-control">
+        <option value="">-- Select Level --</option>
+        <option *ngFor="let level of levels" [value]="level.valueEnglish">{{ level.valueEnglish }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="topic" class="form-label">Topic:</label>
+      <select id="topic" formControlName="topic" class="form-control">
+        <option value="">-- Select Topic --</option>
+        <option *ngFor="let topic of topics" [value]="topic.valueEnglish">{{ topic.valueEnglish }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="voiceFile" class="form-label">Voice File:</label>
+      <input type="file" id="voiceFile" class="form-control" (change)="onFileChange($event, 'voice')">
+    </div>
+
+    <div class="mb-3">
+      <label for="headerPhoto" class="form-label">Header Photo:</label>
+      <input type="file" id="headerPhoto" class="form-control" (change)="onFileChange($event, 'photo')">
+    </div>
+    <div style="text-align: center;">
+    <button type="submit" class="btn btn-success" [disabled]="postForm.invalid || loading">Create Post</button>
+    </div>
+    <div *ngIf="loading" class="mt-3">Loading...</div>
+    <div *ngIf="successMessage" class="alert alert-success mt-3">{{ successMessage }}</div>
+    <div *ngIf="errorMessage" class="alert alert-danger mt-3">{{ errorMessage }}</div>
+  </form>
+</div>

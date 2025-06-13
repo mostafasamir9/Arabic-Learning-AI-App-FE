@@ -1,0 +1,22 @@
+<div class="container mt-4">
+  <h2>Posts</h2>
+
+  <div *ngIf="posts.length > 0; else noPosts">
+    <div class="list-group">
+      <div class="list-group-item mb-3" *ngFor="let post of posts" (click)="viewPostDetails(post.id)" style="cursor: pointer;">
+        <div class="post-item-content">
+          <h5 class="mb-1" *ngIf="post.title">{{ post.title }}</h5>
+          <div *ngIf="post.headerPhotoBase64" class="mt-2">
+            <img [src]="'data:image/jpeg;base64,' + post.headerPhotoBase64" alt="Header Photo" class="img-fluid mt-2" style="max-width: 200px;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noPosts>
+    <div class="alert alert-info" role="alert">
+      No posts found yet.
+    </div>
+  </ng-template>
+</div>
