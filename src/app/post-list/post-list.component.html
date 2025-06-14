@@ -1,17 +1,52 @@
 <div class="container mt-4">
-  <h2>Posts</h2>
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <label for="levelFilter" class="form-label">Filter by Level:</label>
+      <select id="levelFilter" class="form-select" [(ngModel)]="selectedLevelCode">
+        <option value="">All Levels</option>
+        <option *ngFor="let level of levels" [value]="level.valueEnglish">{{ level.valueEnglish }}</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label for="topicFilter" class="form-label">Filter by Topic:</label>
+      <select id="topicFilter" class="form-select" [(ngModel)]="selectedTopicCode">
+        <option value="">All Topics</option>
+        <option *ngFor="let topic of topics" [value]="topic.valueEnglish">{{ topic.valueEnglish }}</option>
+      </select>
+    </div>
+    <div class="col-md-4 d-flex align-items-end">
+      <button class="btn btn-success" (click)="applyFilters()">Apply Filters</button>
+    </div>
+  </div>
 
   <div *ngIf="posts.length > 0; else noPosts">
     <div class="list-group">
       <div class="list-group-item mb-3" *ngFor="let post of posts" (click)="viewPostDetails(post.id)" style="cursor: pointer;">
         <div class="post-item-content">
-          <h5 class="mb-1" *ngIf="post.title">{{ post.title }}</h5>
-          <div *ngIf="post.headerPhotoBase64" class="mt-2">
-            <img [src]="'data:image/jpeg;base64,' + post.headerPhotoBase64" alt="Header Photo" class="img-fluid mt-2" style="max-width: 200px;">
+          <div class="post-text-content">
+            <h5 class="mb-1" *ngIf="post.title">{{ post.title }}</h5>
+            <!-- Add other relevant text content here if needed, e.g., level/topic -->
+          </div>
+          <div *ngIf="post.headerPhotoBase64" class="post-image-container">
+            <img [src]="'data:image/jpeg;base64,' + post.headerPhotoBase64" alt="Header Photo" class="img-fluid post-item-image">
           </div>
         </div>
       </div>
     </div>
+
+    <nav aria-label="Page navigation example" class="mt-3">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage === 0">
+          <button class="page-link" (click)="goToPage(currentPage - 1)">Previous</button>
+        </li>
+        <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index" [class.active]="currentPage === i">
+          <button class="page-link" (click)="goToPage(i)">{{ i + 1 }}</button>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === totalPages - 1">
+          <button class="page-link" (click)="goToPage(currentPage + 1)">Next</button>
+        </li>
+      </ul>
+    </nav>
   </div>
 
   <ng-template #noPosts>

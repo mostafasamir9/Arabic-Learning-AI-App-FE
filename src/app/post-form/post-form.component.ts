@@ -25,6 +25,7 @@ export class PostFormComponent implements OnInit {
     private router: Router
   ) {
     this.postForm = this.fb.group({
+      title: ['', Validators.required],
       arabicText: ['', Validators.required],
       voiceFile: [null],
       headerPhoto: [null],
@@ -92,11 +93,12 @@ export class PostFormComponent implements OnInit {
     this.errorMessage = null;
 
     const postRequest: PostRequest = {
+      title: this.postForm.value.title, // Include title in the request
       arabicText: this.postForm.value.arabicText,
       voiceFileBase64: this.postForm.value.voiceFile,
       headerPhotoBase64: this.postForm.value.headerPhoto,
-      level: this.postForm.value.level, // Include level in request
-      topic: this.postForm.value.topic  // Include topic in request
+      level: this.postForm.value.level,
+      topic: this.postForm.value.topic
     };
 
     this.postService.createPost(postRequest).subscribe({

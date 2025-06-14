@@ -3,9 +3,9 @@
 
   <form [formGroup]="postForm" (submit)="onSubmit()">
     <div class="mb-3">
-      <label for="arabicText" class="form-label">Title:</label>
-      <input id="arabicText" formControlName="arabicText" class="form-control" required>
-      <div *ngIf="postForm.get('arabicText')?.invalid && postForm.get('arabicText')?.touched" class="text-danger">
+      <label for="title" class="form-label">Title:</label>
+      <input id="title" formControlName="title" class="form-control" required>
+      <div *ngIf="postForm.get('title')?.invalid && postForm.get('title')?.touched" class="text-danger">
         Title is required.
       </div>
     </div>

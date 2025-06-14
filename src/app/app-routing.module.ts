@@ -7,7 +7,7 @@ import { PostDetailComponent } from './post-detail/post-detail.component'; // Im
 
 const routes: Routes = [
   { path: '', component: PostListComponent },
-  { path: 'create-post', component: PostFormComponent },
+  { path: 'create-post-5382597359', component: PostFormComponent },
   { path: 'posts/:id', component: PostDetailComponent } // Add route for post details
 ];
 

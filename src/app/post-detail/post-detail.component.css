@@ -1,0 +1,68 @@
+/* arabic-frontend\src\app\post-detail\post-detail.component.css */
+.post-card {
+  background-color: whitesmoke; /* Use theme dark grey for card background */
+  max-width: 90%; /* Make container responsive and cover most of the width */
+  width: 100%; /* Ensure it takes up the specified max-width */
+  margin: 20px auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a stronger shadow for the card */
+}
+
+.post-card .card-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+  padding: 15px;
+}
+
+.post-card .card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.post-card .post-image {
+  max-width: 500px; /* Set maximum width for the image */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block; /* Center the image */
+  margin: 0 auto 15px auto; /* Center horizontally and add bottom margin */
+}
+
+.post-card .card-body {
+  padding: 15px;
+}
+
+.post-card .arabic-text {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: right;
+  direction: rtl;
+}
+
+.post-card .arabic-text-tashkeel {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  text-align: right;
+  direction: rtl;
+  color: #007bff; /* Example color for Tashkeel */
+}
+
+.post-card .english-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+.post-card .card-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+  padding: 15px;
+}
+
+.voice-clip-container {
+  padding: 0 15px; /* Add padding to match card-body padding */
+}
+
+.voice-clip {
+  width: 100%; /* Make the audio player full width */
+}
