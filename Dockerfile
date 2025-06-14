@@ -1,21 +1,22 @@
-# Use the Node alpine official image
-# https://hub.docker.com/_/node
-FROM node:lts-alpine
+# Stage 1: Build the Angular application
+FROM node:lts-alpine as builder
 
-# Create and change to the app directory.
 WORKDIR /app
 
-# Copy the files to the container image
 COPY package*.json ./
-
-# Install packages
 RUN npm ci
 
-# Copy local code to the container image.
-COPY . ./
+COPY . .
 
-# Build the app.
-RUN NODE_OPTIONS=--openssl-legacy-provider npm run build
+RUN NODE_OPTIONS=--openssl-legacy-provider npm run build --configuration=production
 
-# Serve the app
-CMD ["npm", "run", "start"]
+# Stage 2: Serve the application with Nginx
+FROM nginx:alpine
+
+COPY nginx.conf /etc/nginx/nginx.conf
+
+COPY --from=builder /app/dist/arabic-frontend /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
