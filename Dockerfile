@@ -15,7 +15,7 @@ RUN npm ci
 COPY . ./
 
 # Build the app.
-RUN npm run build
+RUN NODE_OPTIONS=--openssl-legacy-provider npm run build
 
 # Serve the app
 CMD ["npm", "run", "start"]
