@@ -14,7 +14,7 @@ RUN npm run build --configuration=production
 # Stage 2: Serve the application with Nginx
 FROM nginx:alpine
 
-COPY --from=builder /app/dist/arabic-frontend /usr/share/nginx/html
+COPY --from=builder /app/dist/arabic-frontend/ /usr/share/nginx/html
 
 EXPOSE 80
 
