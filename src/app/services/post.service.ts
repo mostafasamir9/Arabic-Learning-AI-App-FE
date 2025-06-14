@@ -7,7 +7,7 @@ import { Post, PostRequest, PaginatedPosts } from '../models/post.model'; // Imp
   providedIn: 'root'
 })
 export class PostService {
-  private apiUrl = 'http://localhost:8080/posts';
+  private apiUrl = '/api/posts';
 
   constructor(private http: HttpClient) { }
 

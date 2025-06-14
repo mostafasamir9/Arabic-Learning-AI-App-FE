@@ -7,7 +7,7 @@ import { LookupValue } from '../models/lookup-value.model';
   providedIn: 'root'
 })
 export class LookupValueService {
-  private apiUrl = 'http://localhost:8080/api/lookup-values'; // Assuming your backend runs on localhost:8080
+  private apiUrl = '/api/lookup-values'; // Assuming your backend runs on localhost:8080
 
   constructor(private http: HttpClient) { }
 
