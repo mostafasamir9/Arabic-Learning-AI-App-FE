@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http'; // Import HttpParams
 import { Observable } from 'rxjs';
 import { Post, PostRequest, PaginatedPosts } from '../models/post.model'; // Import PaginatedPosts
+import { environment } from '../../environments/environment'; // Import environment
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
-  private apiUrl = '/api/posts';
+  private apiUrl = `${environment.apiUrl}/api/posts`;
 
   constructor(private http: HttpClient) { }
 

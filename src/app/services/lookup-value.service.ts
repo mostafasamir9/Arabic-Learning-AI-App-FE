@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LookupValue } from '../models/lookup-value.model';
+import { environment } from '../../environments/environment'; // Import environment
 
 @Injectable({
   providedIn: 'root'
 })
 export class LookupValueService {
-  private apiUrl = '/api/lookup-values'; // Assuming your backend runs on localhost:8080
+  private apiUrl = `${environment.apiUrl}/api/lookup-values`;
 
   constructor(private http: HttpClient) { }
 
