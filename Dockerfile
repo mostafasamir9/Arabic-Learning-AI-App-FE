@@ -13,7 +13,7 @@ RUN NODE_OPTIONS=--openssl-legacy-provider npm run build --configuration=product
 # Stage 2: Serve the application with Nginx
 FROM nginx:alpine
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 COPY --from=builder /app/dist/arabic-frontend /usr/share/nginx/html
 
