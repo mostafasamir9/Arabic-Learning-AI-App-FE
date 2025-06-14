@@ -8,7 +8,7 @@ import { environment } from '../../environments/environment'; // Import environm
   providedIn: 'root'
 })
 export class LookupValueService {
-  private apiUrl = `${environment.apiUrl}/lookup-values`;
+  private apiUrl = `${environment.apiUrl}/api/lookup-values`;
 
   constructor(private http: HttpClient) { }
 
