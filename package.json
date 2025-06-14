@@ -1,12 +1,13 @@
 {
   "name": "arabic-frontend",
   "version": "0.0.0",
-  "scripts": {
+"scripts": {
     "ng": "ng",
-    "start": "NODE_OPTIONS=--openssl-legacy-provider ng serve",
-    "build": "NODE_OPTIONS=--openssl-legacy-provider ng build",
-    "watch": "NODE_OPTIONS=--openssl-legacy-provider ng build --watch --configuration development",
-    "test": "NODE_OPTIONS=--openssl-legacy-provider ng test"
+    "dev": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "start": "node dist/gratitudeapp/server/server.mjs"
   },
   "private": true,
   "dependencies": {
