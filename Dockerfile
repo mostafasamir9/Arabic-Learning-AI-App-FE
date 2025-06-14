@@ -1,23 +1,8 @@
-# Stage 1: Build the Angular application
-FROM node:18-alpine as builder
+# Use the official Nginx image from Docker Hub
+FROM nginx:latest
 
-WORKDIR /app
-
-COPY package*.json ./
-
-COPY . .
-
-RUN npm install
-
-RUN NODE_OPTIONS=--openssl-legacy-provider npm run build
-
-# Stage 2: Serve the application with Nginx
-FROM nginx:alpine
-
-COPY --from=builder /app/dist/arabic-frontend /usr/share/nginx/html
-
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
+# Expose port 80 for HTTP traffic
 EXPOSE 80
 
-CMD ["nginx", "-g", "daemon off;"]
+# The default Nginx command will start the server
+# No need for an explicit CMD as it's included in the base image
