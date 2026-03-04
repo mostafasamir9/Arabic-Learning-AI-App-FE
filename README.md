@@ -1,27 +1,107 @@
-# ArabicFrontend
+# 🌙 Arabic Learning AI App — Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.3.
+> The Angular client application for the Arabic Learning AI App — a web interface where users write Arabic posts, get AI-powered English translations, toggle translation visibility, and listen to audio playback.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## 📖 Overview
 
-## Code scaffolding
+**Arabic Learning AI App FE** is the frontend companion to the [Arabic Learning AI App backend](https://github.com/mostafasamir9/Arabic-Learning-AI-App). Built with Angular, it provides a clean, interactive UI where learners can write Arabic text, receive AI-generated English translations, and control their learning experience through show/hide and audio features.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## ✨ Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- ✍️ **Write Arabic Posts** — A text input interface for composing Arabic content
+- 🤖 **AI Translation Display** — Shows the AI-generated English translation fetched from the backend
+- 👁️ **Show / Hide Translation** — Toggle button to reveal or conceal the English translation per post
+- 🔊 **Audio Playback** — Play button to listen to the translation read aloud
+- 📱 **Responsive UI** — Clean, styled interface built with Angular and CSS
+- 🐳 **Docker + Nginx** — Production-ready containerized deployment via Nginx
 
-## Running unit tests
+---
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🛠️ Tech Stack
 
-## Running end-to-end tests
+| Layer | Technology |
+|---|---|
+| Framework | Angular 12 |
+| Language | TypeScript |
+| Styling | CSS |
+| Server (prod) | Nginx |
+| Containerization | Docker |
+| Testing | Karma |
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+---
 
-## Further help
+## 🚀 Getting Started
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) (v14+ recommended)
+- [Angular CLI](https://angular.io/cli) v12
+
+```bash
+npm install -g @angular/cli@12
+```
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/mostafasamir9/Arabic-Learning-AI-App-FE.git
+cd Arabic-Learning-AI-App-FE
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Configure the Backend URL
+
+Update the API base URL to point to your running backend in the environment files:
+
+```typescript
+// src/environments/environment.ts
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8080'
+};
+```
+
+### Run Development Server
+
+```bash
+ng serve
+```
+
+Navigate to `http://localhost:4200/`. The app will automatically reload on file changes.
+
+---
+
+## 🏗️ Build for Production
+
+```bash
+ng build --configuration production
+```
+
+Build artifacts will be output to the `dist/` directory.
+
+---
+
+## 🐳 Docker Deployment
+
+The app is served via **Nginx** in production using Docker.
+
+```bash
+# Build the image
+docker build -t arabic-learning-fe .
+
+# Run the container
+docker run -p 80:80 arabic-learning-fe
+```
+
+The app will be available at `http://localhost`.
+
+---
